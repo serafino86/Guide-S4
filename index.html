@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🩸 Blood Night Guide - Last War Survival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Rajdhani', sans-serif;
+        background: #0a0a0a;
+        color: #e0e0e0;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+            linear-gradient(180deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+        z-index: -1;
+        animation: bgPulse 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+        0% { opacity: 0.8; }
+        100% { opacity: 1; }
+    }
+
+    .header {
+        background: linear-gradient(135deg, rgba(139, 0, 0, 0.9) 0%, rgba(70, 0, 0, 0.95) 100%);
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 40px rgba(255, 0, 0, 0.4);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 3px solid #ff0000;
+        backdrop-filter: blur(10px);
+    }
+
+    .header h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+        text-shadow: 
+            0 0 10px #ff0000,
+            0 0 20px #ff0000,
+            0 0 40px #ff0000,
+            0 0 80px #8b0000;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.15em;
+        font-weight: 900;
+        animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+        0% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000; }
+        100% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000, 0 0 100px #8b0000; }
+    }
+
+    .subtitle {
+        font-size: clamp(0.9rem, 2vw, 1.3rem);
+        color: #ffaaaa;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+    }
+
+    .language-selector {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .lang-btn {
+        background: rgba(20, 20, 20, 0.8);
+        border: 2px solid #ff0000;
+        padding: 0.6rem 1.2rem;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+    }
+
+    .lang-btn:hover {
+        background: rgba(255, 0, 0, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+    }
+
+    .lang-btn.active {
+        background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+        border-color: #ffff00;
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.6);
+        transform: scale(1.05);
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem clamp(1rem, 3vw, 3rem);
+    }
+
+    .nav-tabs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.8rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+        background: linear-gradient(135deg, #1a0000 0%, #0d0000 100%);
+        border: 2px solid #660000;
+        color: #fff;
+        padding: 1rem;
+        cursor: pointer;
+        border-radius: 10px;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        font-family: 'Rajdhani', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .tab-btn:hover {
+        background: linear-gradient(135deg, #330000 0%, #1a0000 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+        border-color: #ff0000;
+    }
+
+    .tab-btn.active {
+        background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+        border-color: #ffff00;
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.5);
+        transform: translateY(0) scale(1.02);
+    }
+
+    .content-section {
+        display: none;
+        background: rgba(15, 15, 15, 0.85);
+        padding: clamp(1.5rem, 4vw, 3rem);
+        border-radius: 15px;
+        border: 2px solid #660000;
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.8),
+            inset 0 1px 0 rgba(255, 0, 0, 0.1);
+        animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(5px);
+    }
+
+    .content-section.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h2 {
+        font-family: 'Orbitron', sans-serif;
+        color: #ff3333;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+        border-bottom: 3px solid #ff0000;
+        padding-bottom: 0.8rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-family: 'Orbitron', sans-serif;
+        color: #ff6666;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        margin: 2rem 0 1rem 0;
+        text-shadow: 0 0 10px rgba(255, 102, 102, 0.4);
+        font-weight: 600;
+    }
+
+    h4 {
+        color: #ffaa00;
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        margin: 1.5rem 0 0.8rem 0;
+        font-weight: 600;
+    }
+
+    .phase-card, .team-composition {
+        background: linear-gradient(135deg, rgba(30, 0, 0, 0.9) 0%, rgba(10, 0, 0, 0.9) 100%);
+        padding: 1.8rem;
+        margin: 1.5rem 0;
+        border-radius: 12px;
+        border-left: 5px solid #ff0000;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+        transition: all 0.3s;
+    }
+
+    .phase-card:hover, .team-composition:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4);
+    }
+
+    .team-composition {
+        border-left-color: #4a90ff;
+        background: linear-gradient(135deg, rgba(0, 15, 40, 0.9) 0%, rgba(0, 5, 20, 0.9) 100%);
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .hero-card {
+        background: linear-gradient(135deg, rgba(40, 20, 60, 0.9) 0%, rgba(20, 10, 30, 0.9) 100%);
+        padding: 1.3rem;
+        border-radius: 10px;
+        border: 2px solid #8b00ff;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero-card:hover {
+        transform: scale(1.08) rotate(1deg);
+        box-shadow: 0 10px 35px rgba(139, 0, 255, 0.5);
+        border-color: #ff00ff;
+    }
+
+    .hero-role {
+        color: #ffaa00;
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.05em;
+    }
+
+    .hero-name {
+        font-family: 'Orbitron', sans-serif;
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-desc {
+        color: #bbb;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .warning-box, .tip-box, .info-box {
+        padding: 1.3rem;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+        border-left: 5px solid;
+    }
+
+    .warning-box {
+        background: rgba(139, 0, 0, 0.2);
+        border-left-color: #ff0000;
+        box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+    }
+
+    .tip-box {
+        background: rgba(0, 100, 0, 0.2);
+        border-left-color: #00ff00;
+        box-shadow: 0 4px 15px rgba(0, 100, 0, 0.3);
+    }
+
+    .info-box {
+        background: rgba(0, 100, 139, 0.2);
+        border-left-color: #00aaff;
+        box-shadow: 0 4px 15px rgba(0, 100, 139, 0.3);
+    }
+
+    .stats-table {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .stats-table th {
+        background: rgba(139, 0, 0, 0.9);
+        padding: 1rem;
+        text-align: left;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+
+    .stats-table td {
+        padding: 0.9rem 1rem;
+        border-bottom: 1px solid #330000;
+    }
+
+    .stats-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .stats-table tr:hover {
+        background: rgba(139, 0, 0, 0.2);
+    }
+
+    ul, ol {
+        margin-left: 1.5rem;
+        margin-top: 0.8rem;
+    }
+
+    li {
+        margin: 0.6rem 0;
+        line-height: 1.7;
+    }
+
+    .emoji {
+        font-size: 1.3em;
+        margin-right: 0.4rem;
+    }
+
+    code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        color: #ffaa00;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+    }
+
+    .highlight {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 165, 0, 0.3) 100%);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        color: #ffff00;
+        font-weight: 700;
+        text-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
+    }
+
+    .checklist {
+        list-style: none;
+        margin-left: 0;
+    }
+
+    .checklist li {
+        padding-left: 2.5rem;
+        position: relative;
+        margin: 0.8rem 0;
+    }
+
+    .checklist li:before {
+        content: '☐';
+        position: absolute;
+        left: 0;
+        color: #ff0000;
+        font-size: 1.8em;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 2.5rem;
+        margin-top: 4rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-top: 3px solid #ff0000;
+        font-size: 0.95rem;
+    }
+
+    .footer p {
+        margin: 0.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 1.8rem;
+        }
+
+        .nav-tabs {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-table {
+            font-size: 0.85rem;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+    }
+
+    .card-type {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 5px;
+        font-size: 0.8em;
+        font-weight: 700;
+        margin: 0.3rem 0.3rem 0.3rem 0;
+    }
+
+    .card-diamond { background: rgba(200, 200, 200, 0.3); color: #eee; }
+    .card-fist { background: rgba(255, 0, 0, 0.3); color: #ff6b6b; }
+    .card-boots { background: rgba(0, 255, 0, 0.3); color: #6bff6b; }
+    .card-shield { background: rgba(0, 100, 255, 0.3); color: #6bb6ff; }
+    .card-bomb { background: rgba(255, 165, 0, 0.3); color: #ffaa00; }
+</style>
+```
+
+</head>
+<body>
+    <div class="header">
+        <h1>🩸 BLOOD NIGHT GUIDE 🩸</h1>
+        <div class="subtitle">Last War: Survival - Complete Strategic Guide</div>
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="changeLanguage('it')" data-lang="it">
+                🇮🇹 <span>Italiano</span>
+            </button>
+            <button class="lang-btn" onclick="changeLanguage('en')" data-lang="en">
+                🇬🇧 <span>English</span>
+            </button>
+            <button class="lang-btn" onclick="changeLanguage('fr')" data-lang="fr">
+                🇫🇷 <span>Français</span>
+            </button>
+        </div>
+    </div>
+
+```
+<div class="container" id="main-container">
+    <!-- Content will be injected by JavaScript -->
+</div>
+
+<div class="footer">
+    <p data-i18n="footer_text">Blood Night Guide v2.0 - Last War: Survival</p>
+    <p data-i18n="footer_author">Created by Enrico | NGC Alliance | Server #1105</p>
+    <p data-i18n="footer_update">Updated: January 2026 - Season 4 Tactical Cards</p>
+</div>
+
+<script>
+    // Complete application with translations and content
+    const translations = {
+        it: {
+            footer_text: "Blood Night Guide v2.0 - Last War: Survival",
+            footer_author: "Creato da Enrico | NGC Alliance | Server #1105",
+            footer_update: "Aggiornato: Gennaio 2026 - Carte Tattiche Stagione 4"
+        },
+        en: {
+            footer_text: "Blood Night Guide v2.0 - Last War: Survival",
+            footer_author: "Created by Enrico | NGC Alliance | Server #1105",
+            footer_update: "Updated: January 2026 - Season 4 Tactical Cards"
+        },
+        fr: {
+            footer_text: "Guide Blood Night v2.0 - Last War: Survival",
+            footer_author: "Créé par Enrico | NGC Alliance | Serveur #1105",
+            footer_update: "Mis à jour : Janvier 2026 - Cartes Tactiques Saison 4"
+        }
+    };
+
+    const content = {
+        it: {
+            tabs: [
+                { id: 'overview', icon: '📋', label: 'Panoramica' },
+                { id: 'phases', icon: '🎮', label: 'Fasi' },
+                { id: 'teams', icon: '⚔️', label: 'Team 4+1' },
+                { id: 'tactics', icon: '🎴', label: 'Carte Tattiche' },
+                { id: 'prep', icon: '🔧', label: 'Preparazione' },
+                { id: 'checklist', icon: '✅', label: 'Checklist' }
+            ],
+            overview: `
+                <h2>Panoramica Blood Night</h2>
+                <div class="info-box">
+                    <h3>Cos'è Blood Night?</h3>
+                    <p>Blood Night è l'evento PvE più complesso e rewarding di Last War. Si presenta come una progressione a ondate dove gli zombie diventano progressivamente più forti, richiedendo preparazione strategica e coordinamento di alleanza.</p>
+                </div>
+                <h3>Struttura Evento</h3>
+                <ul>
+                    <li><span class="emoji">⏰</span><strong>Frequenza:</strong> 3 volte al giorno (02:30, 10:30, 18:30 server time)</li>
+                    <li><span class="emoji">⏱️</span><strong>Durata:</strong> 30 minuti per sessione</li>
+                    <li><span class="emoji">📊</span><strong>Progressione:</strong> Fase 1-2 → Fase 3-4 → Fase 5+ → Holy Mountain</li>
+                </ul>
+                <h3>Scalabilità Ricompense</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Fase</th>
+                            <th>Ricompense</th>
+                            <th>Difficoltà</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Fase 1-2</td><td>Base (carte, risorse)</td><td>⭐</td></tr>
+                        <tr><td>Fase 3-4</td><td>Elevate (quarzo, blueprint)</td><td>⭐⭐⭐</td></tr>
+                        <tr><td>Fase 5+</td><td>Premium (legendary cards, speedups)</td><td>⭐⭐⭐⭐⭐</td></tr>
+                        <tr><td>Holy Mt.</td><td>Top rewards + ranking</td><td>⭐⭐⭐⭐⭐⭐</td></tr>
+                    </tbody>
+                </table>
+                <div class="warning-box">
+                    <h4><span class="emoji">⚠️</span>Regola d'Oro</h4>
+                    <p><strong>Se gli zombie sono segnati in ROSSO → manca resistenza virus → FERMARSI IMMEDIATAMENTE</strong></p>
+                    <p>Non sprecare truppe. Tornare a potenziare la resistenza prima di continuare.</p>
+                </div>
+                <h3>Meccaniche Core</h3>
+                <div class="phase-card">
+                    <h4><span class="emoji">🔦</span>Sistema Luce/Oscurità</h4>
+                    <p><strong>Luce Attiva:</strong> Riduce danno zombie 30-50%, migliora visibilità</p>
+                    <p><strong>Oscurità:</strong> Zombie +50% danni, rischio emboscate</p>
+                </div>
+                <div class="phase-card">
+                    <h4><span class="emoji">🦠</span>Resistenza Virus</h4>
+                    <table class="stats-table">
+                        <tr><td>Fase 1-2</td><td>Base (10-20%)</td></tr>
+                        <tr><td>Fase 3-4</td><td>Media (40-60%)</td></tr>
+                        <tr><td>Fase 5+</td><td>Alta (70-85%)</td></tr>
+                        <tr><td>Holy Mt.</td><td>Massima (90%+)</td></tr>
+                    </table>
+                </div>
+            `,
+            phases: `
+                <h2>Strategia per Fase</h2>
+                
+                <div class="phase-card">
+                    <h3><span class="emoji">🧟‍♂️</span>FASE 1-2: Early Game</h3>
+                    <h4>Obiettivi Primari</h4>
+                    <ul>
+                        <li>Farm massivo risorse base</li>
+                        <li>Accumulare Carte Tattiche</li>
+                        <li>Stockpile Quarzo</li>
+                        <li>Testare composizioni team</li>
+                    </ul>
+                    <div class="tip-box">
+                        <h4><span class="emoji">✅</span>Approccio</h4>
+                        <ul>
+                            <li>Farm aggressivo su zombie normali</li>
+                            <li>Evitare consumabili costosi</li>
+                            <li>Tenere sempre la luce attiva</li>
+                            <li>Team standard è sufficiente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h3><span class="emoji">🧟‍♀️</span>FASE 3-4: Mid Game</h3>
+                    <h4>Obiettivi Primari</h4>
+                    <ul>
+                        <li>Elite zombies hunting</li>
+                        <li>Accumulare valuta evento</li>
+                        <li>Completare task daily</li>
+                        <li>Preparare team endgame</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4><span class="emoji">🚨</span>Requisiti Critici</h4>
+                        <ul>
+                            <li><strong>Resistenza Virus: 50%+ OBBLIGATORIO</strong></li>
+                            <li>Carte: 2-3 maxate per ruolo</li>
+                            <li>Generatori: Livello 8+</li>
+                            <li>Rally: Coordinazione alleanza</li>
+                        </ul>
+                    </div>
+                    <div class="tip-box">
+                        <h4><span class="emoji">💡</span>Tattiche</h4>
+                        <p><strong>Solo Play:</strong> Elite isolati, mantenere escape route<br>
+                        <strong>Rally:</strong> Target boss, coordinare in chat, 1 tank + 3-4 DPS<br>
+                        <strong>Generatori:</strong> Check ogni 15 minuti</p>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h3><span class="emoji">😈</span>FASE 5+ & HOLY MOUNTAIN</h3>
+                    <h4>Obiettivi Finali</h4>
+                    <ul>
+                        <li>🏆 Top ranking rewards</li>
+                        <li>🎁 Legendary drops</li>
+                        <li>💎 Massive gem/speedup</li>
+                        <li>🃏 Carte UR/Epic</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4><span class="emoji">❗</span>Pre-Requisiti NON Negoziabili</h4>
+                        <ul>
+                            <li>✅ Resistenza virus 80%+</li>
+                            <li>✅ Team finale ottimizzato</li>
+                            <li>✅ 3-4 carte tattiche maxate</li>
+                            <li>✅ Faro max level</li>
+                            <li>✅ Buff stockpiled</li>
+                            <li>✅ Coordinamento alleanza confermato</li>
+                        </ul>
+                    </div>
+                    <h4>Strategia Holy Mountain</h4>
+                    <ol>
+                        <li><strong>Phase 1: Scout & Setup</strong> - Identificare spawn boss, posizionare team</li>
+                        <li><strong>Phase 2: Engagement</strong> - Rally coordinata (mai solo), focus fire</li>
+                        <li><strong>Phase 3: Finale</strong> - All-in su boss, consumabili premium</li>
+                    </ol>
+                    <div class="info-box">
+                        <h4>Timing Buff Ottimale</h4>
+                        <p><strong>ATK Boost:</strong> 30 sec prima engagement</p>
+                        <p><strong>DEF Boost:</strong> Al contatto con boss</p>
+                        <p><strong>Healing:</strong> Durante battle (on-demand)</p>
+                        <p><strong>Speed:</strong> Per repositioning veloce</p>
+                    </div>
+                </div>
+            `,
+            teams: `
+                <h2>Formazioni 4+1 Meta</h2>
+                
+                <div class="info-box">
+                    <h3><span class="emoji">🎴</span>Carta Hybrid Squad (4+1)</h3>
+                    <p>Questa carta RIVOLUZIONARIA ti permette di usare 1 eroe di tipo diverso mantenendo il <span class="highlight">20% bonus completo</span> del tipo principale.</p>
+                    <p><strong>Beneficio:</strong> Stessi bonus + flessibilità tattica + counter protection</p>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">🛡️</span>FORMAZIONE #1: TANK + ADAM</h3>
+                    <p class="highlight">★ MIGLIORE PER BLOOD NIGHT ENDGAME ★</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">TANK</div>
+                            <div class="hero-name">Scarlett</div>
+                            <div class="hero-desc">Shield + Healing. CRITICO per synergy con Adam</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">OFF-TANK</div>
+                            <div class="hero-name">Murphy</div>
+                            <div class="hero-desc">Riduzione danno fisico frontline</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">BURST DPS</div>
+                            <div class="hero-name">Adam</div>
+                            <div class="hero-desc">Counter-damage + synergy Scarlett</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">SUPPORT</div>
+                            <div class="hero-name">Marshall</div>
+                            <div class="hero-desc">Buff team + versatilità</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">AoE DPS</div>
+                            <div class="hero-name">Kimberly</div>
+                            <div class="hero-desc">Area damage wave clearing</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>Perché Funziona</h4>
+                        <p>La sinergia Scarlett + Adam è <span class="highlight">quasi imbattibile</span> con boost enorme contro Aircraft. Quando Scarlett crea shield, Adam triggera counter-damage devastante.</p>
+                        <ul>
+                            <li>✅ +20% Tank Type Buff</li>
+                            <li>✅ Synergy unica Scarlett-Adam</li>
+                            <li>✅ Maximum survivability</li>
+                            <li>✅ Ideale per Holy Mountain</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">✈️</span>FORMAZIONE #2: AIRCRAFT + MURPHY</h3>
+                    <p>High Mobility, Alta Survivability</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">BURST</div>
+                            <div class="hero-name">DVA</div>
+                            <div class="hero-desc">Burst damage + Exclusive Weapon</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">TANK</div>
+                            <div class="hero-name">Lucius</div>
+                            <div class="hero-desc">Tank defensivo Aircraft</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Morrison</div>
+                            <div class="hero-desc">DEF reduction debuff</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">SNIPER</div>
+                            <div class="hero-name">Schuyler</div>
+                            <div class="hero-desc">Backline sniper</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">+1 TANK</div>
+                            <div class="hero-name">Murphy</div>
+                            <div class="hero-desc">Physical damage reduction. EW Lv10+ ideal</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>Ideale Per</h4>
+                        <ul>
+                            <li>Fase 3-4 Blood Night (Elite hunting)</li>
+                            <li>PvP contro Tank-heavy teams</li>
+                            <li>Situazioni che richiedono mobilità</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">🚀</span>FORMAZIONE #3: MISSILE + LUCIUS</h3>
+                    <p>All-Rounder Versatile</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">ALL-ROUND</div>
+                            <div class="hero-name">Lucius</div>
+                            <div class="hero-desc">Stats boost al team</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Swift</div>
+                            <div class="hero-desc">Damage dealing</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Tesla</div>
+                            <div class="hero-desc">High damage output</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Fiona</div>
+                            <div class="hero-desc">Missile specialist</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">+1 COUNTER</div>
+                            <div class="hero-name">Adam</div>
+                            <div class="hero-desc">Alternative counter option</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Quando Usarla:</strong><br>
+                        - Setup "safe" contro composizioni sconosciute<br>
+                        - Early/Mid Season 4<br>
+                        - Quando non hai Scarlett/DVA maxati</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Alternative Specifiche</h4>
+                    <p><strong>SE NON HAI Scarlett →</strong> Williams (90% effective)</p>
+                    <p><strong>SE NON HAI Murphy →</strong> McGregor (85% effective)</p>
+                    <p><strong>SE NON HAI Marshall →</strong> Tesla (più DPS, meno sustain)</p>
+                </div>
+            `,
+            tactics: `
+                <h2>Carte Tattiche Stagione 4</h2>
+
+                <div class="info-box">
+                    <h3>Tipologie Carte</h3>
+                    <p><span class="card-type card-diamond">◆ DIAMOND (Universal)</span> - Abilità standalone</p>
+                    <p><span class="card-type card-fist">👊 FIST (Battlestreak)</span> - Combattimenti continui</p>
+                    <p><span class="card-type card-boots">👟 BOOTS (Quickstride)</span> - March speed + morale</p>
+                    <p><span class="card-type card-shield">🛡️ SHIELD (Garrison)</span> - Difensive + regroup skill</p>
+                    <p><span class="card-type card-bomb">💣 BOMB (Destruction)</span> - Season 5 only</p>
+                </div>
+
+                <h3>Core Cards (Permanent)</h3>
+                
+                <div class="phase-card">
+                    <h4><span class="emoji">1️⃣</span>HYBRID SQUAD (4+1)</h4>
+                    <p><span class="highlight">GAME CHANGER ASSOLUTO</span></p>
+                    <ul>
+                        <li>✅ Abilita formazioni miste</li>
+                        <li>✅ Mantiene 20% type boost completo</li>
+                        <li>✅ Counter protection</li>
+                        <li>✅ ESSENZIALE per Blood Night 5+</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">2️⃣</span>COUNTER REVERSAL</h4>
+                    <p>Quando combatti tipo che ti countera:</p>
+                    <ul>
+                        <li>➕ Increased damage dealt</li>
+                        <li>➖ Reduced damage received</li>
+                        <li>📊 Base: 1.5% (scala con upgrades)</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">3️⃣</span>MONSTER SLAYER</h4>
+                    <p>CRITICO per Blood Night PvE</p>
+                    <ul>
+                        <li>🦠 Riduce danno mostri</li>
+                        <li>⚔️ Tactical skill: alta resistenza boss (1x/day)</li>
+                        <li>🏆 MUST per Fase 5+ e Holy Mountain</li>
+                    </ul>
+                </div>
+
+                <h3>Battle Cards (Seasonal)</h3>
+                
+                <div class="phase-card">
+                    <h4>🔴 PURGATOR Faction - PvE Focus</h4>
+                    <ul>
+                        <li>Monster Slayer (core per Blood Night)</li>
+                        <li>Resistenza virus boost</li>
+                        <li>Difesa contro elite zombies</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4>🟢 QUICKSTRIDE Faction - Mobility</h4>
+                    <ul>
+                        <li>March speed boost</li>
+                        <li>Morale dopo fast moves</li>
+                        <li>Utile per repositioning veloce</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Ottimizzazione Upgrade</h4>
+                    <p><strong>PRIORITÀ:</strong></p>
+                    <ol>
+                        <li>Hybrid Squad (4+1) → MAX level prima</li>
+                        <li>Monster Slayer → Per Blood Night</li>
+                        <li>Counter Reversal → Protezione type</li>
+                        <li>Faction-specific → Basato su playstyle</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Random Stats</h4>
+                    <p>🥇 <strong>ORO (UR Traits):</strong> +1 a +3 livelli carta - VALORE ESTREMO</p>
+                    <p>🥈 <strong>VIOLA (SSR Traits):</strong> Buff PvP elevati</p>
+                    <p>🥉 <strong>GRIGIO (Standard):</strong> Bonus base</p>
+                    <p><em>Dismantla carte duplicate con stats grigi per tactical fragments</em></p>
+                </div>
+            `,
+            prep: `
+                <h2>Preparazione Endgame</h2>
+
+                <div class="warning-box">
+                    <h4><span class="emoji">📅</span>Quando Inizia Blood Night?</h4>
+                    <p><strong>Blood Night inizia il GIORNO 2 della SETTIMANA 1</strong> di Season 4</p>
+                    <p><strong>Orari:</strong> 3 sessioni giornaliere di 30 minuti ciascuna</p>
+                    <ul>
+                        <li>🌙 <strong>02:30</strong> (ora server) - Sessione notturna</li>
+                        <li>🌅 <strong>10:30</strong> (ora server) - Sessione mattutina</li>
+                        <li>🌆 <strong>18:30</strong> (ora server) - Sessione serale</li>
+                    </ul>
+                    <p><em>L'evento continua per TUTTA la stagione con progressione in 4 fasi</em></p>
+                </div>
+
+                <h3>Timeline Preparazione Specifica</h3>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>GIORNO 1 SEASON 4 (Day 1 Week 1)</h4>
+                    <p class="highlight">★ ULTIMO GIORNO PRIMA DI BLOOD NIGHT ★</p>
+                    <p><strong>Priorità Assoluta:</strong></p>
+                    <ul>
+                        <li><strong>Faro:</strong> Deve essere MINIMO livello 10 (critico per resistenza base)</li>
+                        <li><strong>Generatori:</strong> Almeno 4 attivi e funzionanti</li>
+                        <li><strong>Optoelectronic Lab:</strong> Livello minimo per resistenza virus base</li>
+                        <li><strong>Team finale:</strong> Composizione decisa e testata</li>
+                        <li><strong>Alleanza:</strong> Meeting finale ore 20:00 (suggerito)</li>
+                        <li><strong>Carte Hybrid Squad (4+1):</strong> Se possibile ottenerla dal primo giorno</li>
+                    </ul>
+                    <div class="tip-box">
+                        <p><strong>Consiglio:</strong> Non dormire! La prima sessione è alle 02:30 del Giorno 2. Imposta 3 sveglie!</p>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>SETTIMANA 1 (Prima di Season 4)</h4>
+                    <p><strong>Se sei in una stagione precedente (es. Season 3):</strong></p>
+                    <ul>
+                        <li>Audit completo risorse disponibili</li>
+                        <li>Identificare gap equipaggiamento</li>
+                        <li>Farm intensivo per materiali upgrade Faro</li>
+                        <li>Preparare scorte: minimo 50k rame, 20k quarzo</li>
+                        <li>Test multipli composizioni team</li>
+                        <li>Studio meccaniche Blood Night (questa guida!)</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>3-4 GIORNI PRIMA Season 4</h4>
+                    <ul>
+                        <li>Conferma con alleanza: chi sarà online Day 1?</li>
+                        <li>Stabilire chi farà la sessione delle 02:30 (critica!)</li>
+                        <li>Creare gruppi WhatsApp/Discord per coordinamento</li>
+                        <li>Preparare screenshot build per reference rapido</li>
+                        <li>Download guida offline (questa pagina!)</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>GIORNO 2 WEEK 1 - BLOOD NIGHT INIZIA!</h4>
+                    <p class="highlight">★ PRIMO BLOOD NIGHT ALLE 02:30 ★</p>
+                    <p><strong>Sessione 1 (02:30):</strong></p>
+                    <ul>
+                        <li>✅ PRIORITÀ: Farm carte tattiche dai first kills</li>
+                        <li>✅ Zombie livello 1-3 (non richiedono resistenza alta)</li>
+                        <li>✅ Attivare sistemi generatori</li>
+                        <li>✅ Test meccaniche luce/oscurità</li>
+                        <li>❌ NON sprecare consumabili costosi</li>
+                    </ul>
+                    <p><strong>Sessione 2 (10:30):</strong></p>
+                    <ul>
+                        <li>Analisi risultati sessione 1</li>
+                        <li>Upgrade immediato Faro se possibile</li>
+                        <li>Farm continuo zombie bassi livelli</li>
+                    </ul>
+                    <p><strong>Sessione 3 (18:30):</strong></p>
+                    <ul>
+                        <li>Tentativo prime elite (se resistenza sufficiente)</li>
+                        <li>Coordinamento prime rally di alleanza</li>
+                        <li>Meeting serale: lessons learned</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4><span class="emoji">📊</span>Progressione Fasi Blood Night</h4>
+                    <p>Blood Night evolve in <strong>4 fasi distinte</strong> durante la stagione:</p>
+                    <ul>
+                        <li><strong>Fase 1:</strong> Week 1-2 (zombie normali, farm base)</li>
+                        <li><strong>Fase 2:</strong> Week 3-4 (elite zombies, prime reward serie)</li>
+                        <li><strong>Fase 3:</strong> Week 5-6 (boss tier, coordinamento critico)</li>
+                        <li><strong>Fase 4 - Holy Mountain:</strong> Week 7-8 (endgame, top rewards)</li>
+                    </ul>
+                    <p><em>Ogni fase richiede preparazione SPECIFICA - non andare alla fase successiva senza i requisiti!</em></p>
+                </div>
+
+                <h3>Investimenti Critici</h3>
+
+                <div class="info-box">
+                    <h4>🗼 Faro (Lighthouse)</h4>
+                    <table class="stats-table">
+                        <tr><th>Level</th><th>Benefit</th><th>Priority</th></tr>
+                        <tr><td>10</td><td>Base virus resist</td><td>🔴 Critical</td></tr>
+                        <tr><td>15</td><td>+15% resist</td><td>🟡 High</td></tr>
+                        <tr><td>20</td><td>Elite unlock</td><td>🟢 Medium</td></tr>
+                        <tr><td>25+</td><td>Bonus stats</td><td>⚪ Nice-to-have</td></tr>
+                    </table>
+                    <p><strong>Target:</strong> Level 18-20 è optimal per costo/beneficio</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💰 Gestione Risorse</h4>
+                    <p><strong>Reserve Planning:</strong></p>
+                    <ul>
+                        <li>Fase 1-2: Spendi 40% risorse</li>
+                        <li>Fase 3-4: Spendi 30% risorse</li>
+                        <li>Fase 5+: Spendi 100% (all-in time!)</li>
+                        <li><strong>Emergency Fund:</strong> Mantieni sempre 20k rame per emergenze</li>
+                    </ul>
+                </div>
+
+                <h3>🤝 Coordinamento Alleanza</h3>
+
+                <div class="phase-card">
+                    <h4>Definizione Ruoli</h4>
+                    <p><strong>LEADERSHIP TIER</strong></p>
+                    <ul>
+                        <li>Event Coordinator (1) - Timing calls, strategy</li>
+                        <li>Rally Leaders (2-3) - Target calling</li>
+                        <li>Resource Manager (1) - Buff distribution</li>
+                    </ul>
+
+                    <p><strong>COMBAT TIER</strong></p>
+                    <ul>
+                        <li>Main Tanks (2-3) - Primary threat holders</li>
+                        <li>DPS Squad (4-6) - Focus fire damage</li>
+                        <li>Support Team (2-3) - Healing, buff maintenance</li>
+                    </ul>
+                </div>
+            `,
+            checklist: `
+                <h2>Checklist Completa</h2>
+
+                <div class="warning-box">
+                    <h4><span class="emoji">🎯</span>Riferimento Temporale</h4>
+                    <p><strong>BLOOD NIGHT INIZIA:</strong> Giorno 2, Settimana 1 di Season 4</p>
+                    <p><strong>Prima sessione:</strong> 02:30 (ora server)</p>
+                    <p>Tutte le checklist sotto sono relative a questa data!</p>
+                </div>
+
+                <div class="phase-card">
+                    <h3>📋 Pre-Season 4 (1 Settimana Prima Start)</h3>
+                    <p class="highlight">★ Se sei ancora in Season 3 o tra stagioni ★</p>
+                    <ul class="checklist">
+                        <li>Faro: pianificare upgrade a livello 10+ per Day 1</li>
+                        <li>Risorse accumulat e: 50k+ rame, 20k+ quarzo minimo</li>
+                        <li>Hero shards farmati per team finale</li>
+                        <li>Discord alleanza: creato canale dedicato Blood Night</li>
+                        <li>Studiare meccaniche Faro + Generatori (nuovi in S4!)</li>
+                        <li>Capire sistema Luce/Oscurità e Electricians</li>
+                        <li>Download questa guida offline</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>⏰ Day 1 Season 4 (24h Prima Blood Night)</h3>
+                    <p class="highlight">★ GIORNO CRITICO - ULTIMO GIORNO DI PREP ★</p>
+                    <ul class="checklist">
+                        <li><strong>MATTINO (08:00-12:00):</strong>
+                            <ul>
+                                <li>Faro attivato e livello 10 minimo raggiunto</li>
+                                <li>4 generatori operativi (+ 5° se hai Alliance Tech)</li>
+                                <li>Optoelectronic Lab livello base per virus resist</li>
+                                <li>Team composition finale decisa</li>
+                            </ul>
+                        </li>
+                        <li><strong>POMERIGGIO (14:00-18:00):</strong>
+                            <ul>
+                                <li>Meeting alleanza: conferma ruoli</li>
+                                <li>Test finale team su zombies world map</li>
+                                <li>Verificare chi farà sessione 02:30 notturna</li>
+                                <li>Preparare consumabili in quick access</li>
+                            </ul>
+                        </li>
+                        <li><strong>SERA (20:00-22:00):</strong>
+                            <ul>
+                                <li>Briefing finale alleanza su Discord</li>
+                                <li>Review strategia Fase 1 (farm focus)</li>
+                                <li>Impostare 3 sveglie per 02:00!</li>
+                                <li>Equipment finale check</li>
+                            </ul>
+                        </li>
+                        <li><strong>NOTTE (23:00):</strong>
+                            <ul>
+                                <li>Andare a dormire PRESTO</li>
+                                <li>Sveglie: 02:00, 02:15, 02:25</li>
+                                <li>Phone carico al 100%</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>⚡ Day 2 Week 1 - BLOOD NIGHT DAY!</h3>
+                    
+                    <h4>🌙 SESSIONE 1 (02:30-03:00)</h4>
+                    <p><strong>30 min PRIMA (02:00):</strong></p>
+                    <ul class="checklist">
+                        <li>Log in 02:00 sharp</li>
+                        <li>Check Discord: team online?</li>
+                        <li>Generatori: tutti funzionanti?</li>
+                        <li>Light system: attiva?</li>
+                        <li>Team equipped: verificato?</li>
+                        <li>Carte tattiche: equipped?</li>
+                        <li>Buff: in inventory ma NON usare ancora</li>
+                    </ul>
+                    <p><strong>Durante sessione (02:30-03:00):</strong></p>
+                    <ul class="checklist">
+                        <li>Focus SOLO zombie lvl 1-3 (first kills per carte!)</li>
+                        <li>NON sprecare consumabili</li>
+                        <li>Attivare Electricians se necessario</li>
+                        <li>Monitorare colore zombies (se rossi = STOP)</li>
+                        <li>Coordinate con alleanza in chat</li>
+                    </ul>
+                    <p><strong>Post-sessione (03:00-03:30):</strong></p>
+                    <ul class="checklist">
+                        <li>Quick debrief su Discord</li>
+                        <li>Carte ottenute: quante?</li>
+                        <li>Problemi riscontrati?</li>
+                        <li>Tornare a dormire se possibile</li>
+                    </ul>
+
+                    <h4>🌅 SESSIONE 2 (10:30-11:00)</h4>
+                    <ul class="checklist">
+                        <li>Check risultati sessione 1</li>
+                        <li>Upgrade Faro se hai risorse</li>
+                        <li>Continuare farm zombie bassi</li>
+                        <li>Testare zombie livello 4-5</li>
+                        <li>Check virus resistance: sufficiente?</li>
+                    </ul>
+
+                    <h4>🌆 SESSIONE 3 (18:30-19:00)</h4>
+                    <ul class="checklist">
+                        <li>Prima rally coordinata di alleanza</li>
+                        <li>Target: elite zombie se team pronto</li>
+                        <li>Meeting post-evento ore 19:30</li>
+                        <li>Plan per giorno 3</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>🎯 Week 1-2 (Fase 1 Blood Night)</h3>
+                    <p><strong>Obiettivo:</strong> Farm massivo e costruzione fondamenta</p>
+                    <ul class="checklist">
+                        <li>Partecipare minimo 2 sessioni/giorno</li>
+                        <li>Faro: raggiungere livello 15-18</li>
+                        <li>Virus resistance: 30-40%</li>
+                        <li>Carte tattiche: accumulare 10-15 cards</li>
+                        <li>Hybrid Squad (4+1): ottenerla ASAP</li>
+                        <li>Team: finalizzare composizione 4+1</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>🎯 Week 3-4 (Fase 2 - Elite Hunting)</h3>
+                    <p><strong>Pre-requisiti OBBLIGATORI:</strong></p>
+                    <ul class="checklist">
+                        <li>Faro livello 18+ raggiunto</li>
+                        <li>Virus resistance 50%+ confirmed</li>
+                        <li>Carte: 2-3 maxate per ruolo</li>
+                        <li>Hybrid Squad card ottenuta e equipped</li>
+                        <li>Rally partners identificati</li>
+                        <li>Generator coverage 24/7 organizzata</li>
+                    </ul>
+                    <p><strong>Durante Fase 2:</strong></p>
+                    <ul class="checklist">
+                        <li>Partecipare a tutte le rally elite</li>
+                        <li>Check generatori ogni 15 min</li>
+                        <li>Evitare zombie rossi (manca resist!)</li>
+                        <li>Accumulare valuta evento</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>🎯 Week 5-6 (Fase 3 - Boss Tier)</h3>
+                    <ul class="checklist">
+                        <li>Virus resistance 70%+ confirmed</li>
+                        <li>3-4 carte tattiche maxed</li>
+                        <li>Buff stockpiled: minimo 20 di ogni tipo</li>
+                        <li>Rally coordination perfezionata</li>
+                        <li>Emergency supplies preparate</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>🎯 Week 7-8 (Fase 4 - HOLY MOUNTAIN)</h3>
+                    <p class="highlight">★ ENDGAME - PREPARAZIONE MASSIMA ★</p>
+                    <p><strong>1 Settimana Prima Holy Mountain:</strong></p>
+                    <ul class="checklist">
+                        <li>Virus resistance 85%+ (90%+ ideale)</li>
+                        <li>Faro livello 20+ (se possibile)</li>
+                        <li>Team finale ottimizzato e testato</li>
+                        <li>Tutte carte core maxate</li>
+                        <li>Alleanza: ruoli confermati</li>
+                        <li>Strategia Holy Mountain studiata</li>
+                    </ul>
+                    <p><strong>Day Of Holy Mountain:</strong></p>
+                    <ul class="checklist">
+                        <li>Log in 30 min EARLY</li>
+                        <li>Rally composition verified</li>
+                        <li>All buffs ready (countdown activation)</li>
+                        <li>Target call system tested</li>
+                        <li>NO SOLO PLAYERS (zero tolerance!)</li>
+                        <li>Victory conditions understood</li>
+                        <li>Post-victory celebration planned 🎉</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h3>❌ Errori Fatali da Evitare</h3>
+                    <ol>
+                        <li><strong>Day 1:</strong> Non attivare Faro in tempo</li>
+                        <li><strong>Week 1:</strong> Sprecare buff su zombie normali</li>
+                        <li><strong>Week 2-3:</strong> Andare in Fase 3 senza 50% resist</li>
+                        <li><strong>Week 5:</strong> Ignorare generatori (controllare ogni 15 min!)</li>
+                        <li><strong>Week 6:</strong> Non stockpilare buff per endgame</li>
+                        <li><strong>Holy Mt.:</strong> Andare SOLO (suicidio garantito!)</li>
+                    </ol>
+                </div>
+
+                <div class="info-box">
+                    <h3>🏆 Victory Conditions</h3>
+                    <ul>
+                        <li>✅ Sopravvivere tutte le 8 settimane</li>
+                        <li>✅ Faro livello 20+ raggiunto</li>
+                        <li>✅ Top 10 ranking Holy Mountain</li>
+                        <li>✅ Legendary rewards claimed</li>
+                        <li>✅ Zero team wipes during season</li>
+                        <li>✅ Alleanza coordinata perfettamente</li>
+                    </ul>
+                </div>
+            `
+        },
+        en: {
+            tabs: [
+                { id: 'overview', icon: '📋', label: 'Overview' },
+                { id: 'phases', icon: '🎮', label: 'Phases' },
+                { id: 'teams', icon: '⚔️', label: '4+1 Teams' },
+                { id: 'tactics', icon: '🎴', label: 'Tactical Cards' },
+                { id: 'prep', icon: '🔧', label: 'Preparation' },
+                { id: 'checklist', icon: '✅', label: 'Checklist' }
+            ],
+            overview: `
+                <h2>Blood Night Overview</h2>
+                <div class="info-box">
+                    <h3>What is Blood Night?</h3>
+                    <p>Blood Night is the most complex and rewarding PvE event in Last War. It features wave-based progression where zombies become progressively stronger, requiring strategic preparation and alliance coordination.</p>
+                </div>
+                <h3>Event Structure</h3>
+                <ul>
+                    <li><span class="emoji">⏰</span><strong>Frequency:</strong> 3 times daily (02:30, 10:30, 18:30 server time)</li>
+                    <li><span class="emoji">⏱️</span><strong>Duration:</strong> 30 minutes per session</li>
+                    <li><span class="emoji">📊</span><strong>Progression:</strong> Phase 1-2 → Phase 3-4 → Phase 5+ → Holy Mountain</li>
+                </ul>
+                <h3>Reward Scaling</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Rewards</th>
+                            <th>Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Phase 1-2</td><td>Base (cards, resources)</td><td>⭐</td></tr>
+                        <tr><td>Phase 3-4</td><td>Elevated (quartz, blueprints)</td><td>⭐⭐⭐</td></tr>
+                        <tr><td>Phase 5+</td><td>Premium (legendary cards, speedups)</td><td>⭐⭐⭐⭐⭐</td></tr>
+                        <tr><td>Holy Mt.</td><td>Top rewards + ranking</td><td>⭐⭐⭐⭐⭐⭐</td></tr>
+                    </tbody>
+                </table>
+                <div class="warning-box">
+                    <h4><span class="emoji">⚠️</span>Golden Rule</h4>
+                    <p><strong>If zombies are marked RED → missing virus resistance → STOP IMMEDIATELY</strong></p>
+                    <p>Don't waste troops. Return to boost resistance before continuing.</p>
+                </div>
+                <h3>Core Mechanics</h3>
+                <div class="phase-card">
+                    <h4><span class="emoji">🔦</span>Light/Darkness System</h4>
+                    <p><strong>Light Active:</strong> Reduces zombie damage 30-50%, improves visibility</p>
+                    <p><strong>Darkness:</strong> Zombies +50% damage, ambush risk</p>
+                </div>
+                <div class="phase-card">
+                    <h4><span class="emoji">🦠</span>Virus Resistance</h4>
+                    <table class="stats-table">
+                        <tr><td>Phase 1-2</td><td>Base (10-20%)</td></tr>
+                        <tr><td>Phase 3-4</td><td>Medium (40-60%)</td></tr>
+                        <tr><td>Phase 5+</td><td>High (70-85%)</td></tr>
+                        <tr><td>Holy Mt.</td><td>Maximum (90%+)</td></tr>
+                    </table>
+                </div>
+            `,
+            phases: `
+                <h2>Phase Strategy</h2>
+                
+                <div class="phase-card">
+                    <h3><span class="emoji">🧟‍♂️</span>PHASE 1-2: Early Game</h3>
+                    <h4>Primary Objectives</h4>
+                    <ul>
+                        <li>Massive resource farming</li>
+                        <li>Accumulate Tactical Cards</li>
+                        <li>Stockpile Quartz</li>
+                        <li>Test team compositions</li>
+                    </ul>
+                    <div class="tip-box">
+                        <h4><span class="emoji">✅</span>Approach</h4>
+                        <ul>
+                            <li>Aggressive farming on normal zombies</li>
+                            <li>Avoid expensive consumables</li>
+                            <li>Always keep light active</li>
+                            <li>Standard team is sufficient</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h3><span class="emoji">🧟‍♀️</span>PHASE 3-4: Mid Game</h3>
+                    <h4>Primary Objectives</h4>
+                    <ul>
+                        <li>Elite zombie hunting</li>
+                        <li>Accumulate event currency</li>
+                        <li>Complete daily tasks</li>
+                        <li>Prepare endgame team</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4><span class="emoji">🚨</span>Critical Requirements</h4>
+                        <ul>
+                            <li><strong>Virus Resistance: 50%+ MANDATORY</strong></li>
+                            <li>Cards: 2-3 maxed per role</li>
+                            <li>Generators: Level 8+</li>
+                            <li>Rally: Alliance coordination</li>
+                        </ul>
+                    </div>
+                    <div class="tip-box">
+                        <h4><span class="emoji">💡</span>Tactics</h4>
+                        <p><strong>Solo Play:</strong> Isolated elites, maintain escape route<br>
+                        <strong>Rally:</strong> Target boss, coordinate in chat, 1 tank + 3-4 DPS<br>
+                        <strong>Generators:</strong> Check every 15 minutes</p>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h3><span class="emoji">😈</span>PHASE 5+ & HOLY MOUNTAIN</h3>
+                    <h4>Final Objectives</h4>
+                    <ul>
+                        <li>🏆 Top ranking rewards</li>
+                        <li>🎁 Legendary drops</li>
+                        <li>💎 Massive gems/speedups</li>
+                        <li>🃏 UR/Epic Cards</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4><span class="emoji">❗</span>Non-Negotiable Prerequisites</h4>
+                        <ul>
+                            <li>✅ Virus resistance 80%+</li>
+                            <li>✅ Optimized final team</li>
+                            <li>✅ 3-4 maxed tactical cards</li>
+                            <li>✅ Max level Lighthouse</li>
+                            <li>✅ Buffs stockpiled</li>
+                            <li>✅ Alliance coordination confirmed</li>
+                        </ul>
+                    </div>
+                    <h4>Holy Mountain Strategy</h4>
+                    <ol>
+                        <li><strong>Phase 1: Scout & Setup</strong> - Identify boss spawns, position team</li>
+                        <li><strong>Phase 2: Engagement</strong> - Coordinated rally (never solo), focus fire</li>
+                        <li><strong>Phase 3: Finale</strong> - All-in on boss, premium consumables</li>
+                    </ol>
+                    <div class="info-box">
+                        <h4>Optimal Buff Timing</h4>
+                        <p><strong>ATK Boost:</strong> 30 sec before engagement</p>
+                        <p><strong>DEF Boost:</strong> Upon contact with boss</p>
+                        <p><strong>Healing:</strong> During battle (on-demand)</p>
+                        <p><strong>Speed:</strong> For quick repositioning</p>
+                    </div>
+                </div>
+            `,
+            teams: `
+                <h2>Meta 4+1 Formations</h2>
+                
+                <div class="info-box">
+                    <h3><span class="emoji">🎴</span>Hybrid Squad (4+1) Card</h3>
+                    <p>This REVOLUTIONARY card allows you to use 1 hero of different type while maintaining the <span class="highlight">full 20% bonus</span> of the main type.</p>
+                    <p><strong>Benefit:</strong> Same bonuses + tactical flexibility + counter protection</p>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">🛡️</span>FORMATION #1: TANK + ADAM</h3>
+                    <p class="highlight">★ BEST FOR BLOOD NIGHT ENDGAME ★</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">TANK</div>
+                            <div class="hero-name">Scarlett</div>
+                            <div class="hero-desc">Shield + Healing. CRITICAL for synergy with Adam</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">OFF-TANK</div>
+                            <div class="hero-name">Murphy</div>
+                            <div class="hero-desc">Physical damage reduction frontline</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">BURST DPS</div>
+                            <div class="hero-name">Adam</div>
+                            <div class="hero-desc">Counter-damage + Scarlett synergy</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">SUPPORT</div>
+                            <div class="hero-name">Marshall</div>
+                            <div class="hero-desc">Team buffs + versatility</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">AoE DPS</div>
+                            <div class="hero-name">Kimberly</div>
+                            <div class="hero-desc">Area damage wave clearing</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>Why It Works</h4>
+                        <p>The Scarlett + Adam synergy is <span class="highlight">nearly unstoppable</span> with huge boost against Aircraft. When Scarlett creates shields, Adam triggers devastating counter-damage.</p>
+                        <ul>
+                            <li>✅ +20% Tank Type Buff</li>
+                            <li>✅ Unique Scarlett-Adam synergy</li>
+                            <li>✅ Maximum survivability</li>
+                            <li>✅ Ideal for Holy Mountain</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">✈️</span>FORMATION #2: AIRCRAFT + MURPHY</h3>
+                    <p>High Mobility, High Survivability</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">BURST</div>
+                            <div class="hero-name">DVA</div>
+                            <div class="hero-desc">Burst damage + Exclusive Weapon</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">TANK</div>
+                            <div class="hero-name">Lucius</div>
+                            <div class="hero-desc">Aircraft defensive tank</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Morrison</div>
+                            <div class="hero-desc">DEF reduction debuff</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">SNIPER</div>
+                            <div class="hero-name">Schuyler</div>
+                            <div class="hero-desc">Backline sniper</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">+1 TANK</div>
+                            <div class="hero-name">Murphy</div>
+                            <div class="hero-desc">Physical damage reduction. EW Lv10+ ideal</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>Ideal For</h4>
+                        <ul>
+                            <li>Phase 3-4 Blood Night (Elite hunting)</li>
+                            <li>PvP against Tank-heavy teams</li>
+                            <li>Situations requiring mobility</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">🚀</span>FORMATION #3: MISSILE + LUCIUS</h3>
+                    <p>Versatile All-Rounder</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">ALL-ROUND</div>
+                            <div class="hero-name">Lucius</div>
+                            <div class="hero-desc">Stats boost to team</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Swift</div>
+                            <div class="hero-desc">Damage dealing</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Tesla</div>
+                            <div class="hero-desc">High damage output</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Fiona</div>
+                            <div class="hero-desc">Missile specialist</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">+1 COUNTER</div>
+                            <div class="hero-name">Adam</div>
+                            <div class="hero-desc">Alternative counter option</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>When to Use:</strong><br>
+                        - Safe setup against unknown compositions<br>
+                        - Early/Mid Season 4<br>
+                        - When you don't have maxed Scarlett/DVA</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Specific Alternatives</h4>
+                    <p><strong>IF NO Scarlett →</strong> Williams (90% effective)</p>
+                    <p><strong>IF NO Murphy →</strong> McGregor (85% effective)</p>
+                    <p><strong>IF NO Marshall →</strong> Tesla (more DPS, less sustain)</p>
+                </div>
+            `,
+            tactics: `
+                <h2>Season 4 Tactical Cards</h2>
+
+                <div class="info-box">
+                    <h3>Card Types</h3>
+                    <p><span class="card-type card-diamond">◆ DIAMOND (Universal)</span> - Standalone abilities</p>
+                    <p><span class="card-type card-fist">👊 FIST (Battlestreak)</span> - Continuous battles</p>
+                    <p><span class="card-type card-boots">👟 BOOTS (Quickstride)</span> - March speed + morale</p>
+                    <p><span class="card-type card-shield">🛡️ SHIELD (Garrison)</span> - Defensive + regroup skill</p>
+                    <p><span class="card-type card-bomb">💣 BOMB (Destruction)</span> - Season 5 only</p>
+                </div>
+
+                <h3>Core Cards (Permanent)</h3>
+                
+                <div class="phase-card">
+                    <h4><span class="emoji">1️⃣</span>HYBRID SQUAD (4+1)</h4>
+                    <p><span class="highlight">ABSOLUTE GAME CHANGER</span></p>
+                    <ul>
+                        <li>✅ Enables mixed formations</li>
+                        <li>✅ Maintains full 20% type boost</li>
+                        <li>✅ Counter protection</li>
+                        <li>✅ ESSENTIAL for Blood Night 5+</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">2️⃣</span>COUNTER REVERSAL</h4>
+                    <p>When fighting type that counters you:</p>
+                    <ul>
+                        <li>➕ Increased damage dealt</li>
+                        <li>➖ Reduced damage received</li>
+                        <li>📊 Base: 1.5% (scales with upgrades)</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">3️⃣</span>MONSTER SLAYER</h4>
+                    <p>CRITICAL for Blood Night PvE</p>
+                    <ul>
+                        <li>🦠 Reduces monster damage</li>
+                        <li>⚔️ Tactical skill: high boss resistance (1x/day)</li>
+                        <li>🏆 MUST for Phase 5+ and Holy Mountain</li>
+                    </ul>
+                </div>
+
+                <h3>Battle Cards (Seasonal)</h3>
+                
+                <div class="phase-card">
+                    <h4>🔴 PURGATOR Faction - PvE Focus</h4>
+                    <ul>
+                        <li>Monster Slayer (core for Blood Night)</li>
+                        <li>Virus resistance boost</li>
+                        <li>Defense against elite zombies</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4>🟢 QUICKSTRIDE Faction - Mobility</h4>
+                    <ul>
+                        <li>March speed boost</li>
+                        <li>Morale after fast moves</li>
+                        <li>Useful for quick repositioning</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Upgrade Optimization</h4>
+                    <p><strong>PRIORITY:</strong></p>
+                    <ol>
+                        <li>Hybrid Squad (4+1) → MAX level first</li>
+                        <li>Monster Slayer → For Blood Night</li>
+                        <li>Counter Reversal → Type protection</li>
+                        <li>Faction-specific → Based on playstyle</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Random Stats</h4>
+                    <p>🥇 <strong>GOLD (UR Traits):</strong> +1 to +3 card levels - EXTREME VALUE</p>
+                    <p>🥈 <strong>PURPLE (SSR Traits):</strong> High PvP buffs</p>
+                    <p>🥉 <strong>GRAY (Standard):</strong> Base bonuses</p>
+                    <p><em>Dismantle duplicate cards with gray stats for tactical fragments</em></p>
+                </div>
+            `,
+            prep: `
+                <h2>Endgame Preparation</h2>
+
+                <div class="warning-box">
+                    <h4><span class="emoji">📅</span>When Does Blood Night Start?</h4>
+                    <p><strong>Blood Night begins on DAY 2 of WEEK 1</strong> in Season 4</p>
+                    <p><strong>Schedule:</strong> 3 daily sessions of 30 minutes each</p>
+                    <ul>
+                        <li>🌙 <strong>02:30</strong> (server time) - Night session</li>
+                        <li>🌅 <strong>10:30</strong> (server time) - Morning session</li>
+                        <li>🌆 <strong>18:30</strong> (server time) - Evening session</li>
+                    </ul>
+                    <p><em>The event continues throughout the ENTIRE season with progression in 4 phases</em></p>
+                </div>
+
+                <h3>Specific Preparation Timeline</h3>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>DAY 1 SEASON 4 (Day 1 Week 1)</h4>
+                    <p class="highlight">★ LAST DAY BEFORE BLOOD NIGHT ★</p>
+                    <p><strong>Absolute Priority:</strong></p>
+                    <ul>
+                        <li><strong>Lighthouse:</strong> Must be MINIMUM level 10 (critical for base resistance)</li>
+                        <li><strong>Generators:</strong> At least 4 active and functional</li>
+                        <li><strong>Optoelectronic Lab:</strong> Minimum level for base virus resistance</li>
+                        <li><strong>Final team:</strong> Composition decided and tested</li>
+                        <li><strong>Alliance:</strong> Final meeting at 8:00 PM (suggested)</li>
+                        <li><strong>Hybrid Squad (4+1) card:</strong> Obtain it on day 1 if possible</li>
+                    </ul>
+                    <div class="tip-box">
+                        <p><strong>Advice:</strong> Don't sleep! First session is at 02:30 on Day 2. Set 3 alarms!</p>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>WEEK 1 (Before Season 4)</h4>
+                    <p><strong>If you're in a previous season (e.g. Season 3):</strong></p>
+                    <ul>
+                        <li>Complete resource audit</li>
+                        <li>Identify equipment gaps</li>
+                        <li>Intensive farming for Lighthouse upgrade materials</li>
+                        <li>Prepare stockpiles: minimum 50k copper, 20k quartz</li>
+                        <li>Multiple team composition tests</li>
+                        <li>Study Blood Night mechanics (this guide!)</li>
+                    </ul>
+                </div>
+
+                <h3>Critical Investments</h3>
+
+                <div class="info-box">
+                    <h4>🗼 Lighthouse</h4>
+                    <table class="stats-table">
+                        <tr><th>Level</th><th>Benefit</th><th>Priority</th></tr>
+                        <tr><td>10</td><td>Base virus resist</td><td>🔴 Critical</td></tr>
+                        <tr><td>15</td><td>+15% resist</td><td>🟡 High</td></tr>
+                        <tr><td>20</td><td>Elite unlock</td><td>🟢 Medium</td></tr>
+                        <tr><td>25+</td><td>Bonus stats</td><td>⚪ Nice-to-have</td></tr>
+                    </table>
+                    <p><strong>Target:</strong> Level 18-20 is optimal for cost/benefit</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💰 Resource Management</h4>
+                    <p><strong>Reserve Planning:</strong></p>
+                    <ul>
+                        <li>Phase 1-2: Spend 40% resources</li>
+                        <li>Phase 3-4: Spend 30% resources</li>
+                        <li>Phase 5+: Spend 100% (all-in time!)</li>
+                        <li><strong>Emergency Fund:</strong> Always keep 20k copper for emergencies</li>
+                    </ul>
+                </div>
+            `,
+            checklist: `
+                <h2>Complete Checklist</h2>
+
+                <div class="warning-box">
+                    <h4><span class="emoji">🎯</span>Time Reference</h4>
+                    <p><strong>BLOOD NIGHT STARTS:</strong> Day 2, Week 1 of Season 4</p>
+                    <p><strong>First session:</strong> 02:30 (server time)</p>
+                    <p>All checklists below are relative to this date!</p>
+                </div>
+
+                <div class="phase-card">
+                    <h3>📋 Pre-Season 4 (1 Week Before Start)</h3>
+                    <p class="highlight">★ If you're still in Season 3 or between seasons ★</p>
+                    <ul class="checklist">
+                        <li>Lighthouse: plan upgrade to level 10+ for Day 1</li>
+                        <li>Accumulated resources: 50k+ copper, 20k+ quartz minimum</li>
+                        <li>Hero shards farmed for final team</li>
+                        <li>Alliance Discord: dedicated Blood Night channel created</li>
+                        <li>Study Lighthouse + Generators mechanics (new in S4!)</li>
+                        <li>Understand Light/Darkness system and Electricians</li>
+                        <li>Download this guide offline</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>⏰ Day 1 Season 4 (24h Before Blood Night)</h3>
+                    <p class="highlight">★ CRITICAL DAY - LAST DAY OF PREP ★</p>
+                    <ul class="checklist">
+                        <li><strong>MORNING (08:00-12:00):</strong>
+                            <ul>
+                                <li>Lighthouse activated and level 10 minimum reached</li>
+                                <li>4 generators operational (+ 5th if you have Alliance Tech)</li>
+                                <li>Optoelectronic Lab base level for virus resist</li>
+                                <li>Final team composition decided</li>
+                            </ul>
+                        </li>
+                        <li><strong>AFTERNOON (14:00-18:00):</strong>
+                            <ul>
+                                <li>Alliance meeting: confirm roles</li>
+                                <li>Final team test on world map zombies</li>
+                                <li>Verify who will do 02:30 night session</li>
+                                <li>Prepare consumables in quick access</li>
+                            </ul>
+                        </li>
+                        <li><strong>EVENING (20:00-22:00):</strong>
+                            <ul>
+                                <li>Final alliance briefing on Discord</li>
+                                <li>Review Phase 1 strategy (farm focus)</li>
+                                <li>Set 3 alarms for 02:00!</li>
+                                <li>Final equipment check</li>
+                            </ul>
+                        </li>
+                        <li><strong>NIGHT (23:00):</strong>
+                            <ul>
+                                <li>Go to sleep EARLY</li>
+                                <li>Alarms: 02:00, 02:15, 02:25</li>
+                                <li>Phone charged to 100%</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>⚡ Day 2 Week 1 - BLOOD NIGHT DAY!</h3>
+                    
+                    <h4>🌙 SESSION 1 (02:30-03:00)</h4>
+                    <p><strong>30 min BEFORE (02:00):</strong></p>
+                    <ul class="checklist">
+                        <li>Log in 02:00 sharp</li>
+                        <li>Check Discord: team online?</li>
+                        <li>Generators: all functional?</li>
+                        <li>Light system: active?</li>
+                        <li>Team equipped: verified?</li>
+                        <li>Tactical cards: equipped?</li>
+                        <li>Buffs: in inventory but DON'T use yet</li>
+                    </ul>
+                    <p><strong>During session (02:30-03:00):</strong></p>
+                    <ul class="checklist">
+                        <li>Focus ONLY zombie lvl 1-3 (first kills for cards!)</li>
+                        <li>DON'T waste consumables</li>
+                        <li>Activate Electricians if necessary</li>
+                        <li>Monitor zombie color (if red = STOP)</li>
+                        <li>Coordinate with alliance in chat</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h3>❌ Fatal Errors to Avoid</h3>
+                    <ol>
+                        <li><strong>Day 1:</strong> Not activating Lighthouse in time</li>
+                        <li><strong>Week 1:</strong> Wasting buffs on normal zombies</li>
+                        <li><strong>Week 2-3:</strong> Going to Phase 3 without 50% resist</li>
+                        <li><strong>Week 5:</strong> Ignoring generators (check every 15 min!)</li>
+                        <li><strong>Week 6:</strong> Not stockpiling buffs for endgame</li>
+                        <li><strong>Holy Mt.:</strong> Going SOLO (guaranteed suicide!)</li>
+                    </ol>
+                </div>
+
+                <div class="info-box">
+                    <h3>🏆 Victory Conditions</h3>
+                    <ul>
+                        <li>✅ Survive all 8 weeks</li>
+                        <li>✅ Lighthouse level 20+ reached</li>
+                        <li>✅ Top 10 ranking Holy Mountain</li>
+                        <li>✅ Legendary rewards claimed</li>
+                        <li>✅ Zero team wipes during season</li>
+                        <li>✅ Alliance perfectly coordinated</li>
+                    </ul>
+                </div>
+            `
+        },
+        fr: {
+            tabs: [
+                { id: 'overview', icon: '📋', label: 'Aperçu' },
+                { id: 'phases', icon: '🎮', label: 'Phases' },
+                { id: 'teams', icon: '⚔️', label: 'Équipes 4+1' },
+                { id: 'tactics', icon: '🎴', label: 'Cartes Tactiques' },
+                { id: 'prep', icon: '🔧', label: 'Préparation' },
+                { id: 'checklist', icon: '✅', label: 'Liste' }
+            ],
+            overview: `
+                <h2>Aperçu de Blood Night</h2>
+                <div class="info-box">
+                    <h3>Qu'est-ce que Blood Night ?</h3>
+                    <p>Blood Night est l'événement PvE le plus complexe et gratifiant de Last War. Il présente une progression par vagues où les zombies deviennent progressivement plus forts, nécessitant une préparation stratégique et une coordination d'alliance.</p>
+                </div>
+                <h3>Structure de l'Événement</h3>
+                <ul>
+                    <li><span class="emoji">⏰</span><strong>Fréquence :</strong> 3 fois par jour (02:30, 10:30, 18:30 heure serveur)</li>
+                    <li><span class="emoji">⏱️</span><strong>Durée :</strong> 30 minutes par session</li>
+                    <li><span class="emoji">📊</span><strong>Progression :</strong> Phase 1-2 → Phase 3-4 → Phase 5+ → Holy Mountain</li>
+                </ul>
+                <h3>Échelle de Récompenses</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Récompenses</th>
+                            <th>Difficulté</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Phase 1-2</td><td>Base (cartes, ressources)</td><td>⭐</td></tr>
+                        <tr><td>Phase 3-4</td><td>Élevées (quartz, plans)</td><td>⭐⭐⭐</td></tr>
+                        <tr><td>Phase 5+</td><td>Premium (cartes légendaires)</td><td>⭐⭐⭐⭐⭐</td></tr>
+                        <tr><td>Holy Mt.</td><td>Meilleures + classement</td><td>⭐⭐⭐⭐⭐⭐</td></tr>
+                    </tbody>
+                </table>
+                <div class="warning-box">
+                    <h4><span class="emoji">⚠️</span>Règle d'Or</h4>
+                    <p><strong>Si les zombies sont marqués en ROUGE → résistance virale manquante → ARRÊTEZ IMMÉDIATEMENT</strong></p>
+                    <p>Ne gaspillez pas les troupes. Revenez améliorer la résistance avant de continuer.</p>
+                </div>
+                <h3>Mécaniques de Base</h3>
+                <div class="phase-card">
+                    <h4><span class="emoji">🔦</span>Système Lumière/Obscurité</h4>
+                    <p><strong>Lumière Active :</strong> Réduit les dégâts des zombies de 30-50%</p>
+                    <p><strong>Obscurité :</strong> Zombies +50% dégâts, risque d'embuscade</p>
+                </div>
+            `,
+            phases: `
+                <h2>Stratégie par Phase</h2>
+                
+                <div class="phase-card">
+                    <h3><span class="emoji">🧟‍♂️</span>PHASE 1-2 : Début de Partie</h3>
+                    <h4>Objectifs Principaux</h4>
+                    <ul>
+                        <li>Farming massif de ressources</li>
+                        <li>Accumuler des Cartes Tactiques</li>
+                        <li>Stocker du Quartz</li>
+                        <li>Tester les compositions d'équipe</li>
+                    </ul>
+                    <div class="tip-box">
+                        <h4><span class="emoji">✅</span>Approche</h4>
+                        <ul>
+                            <li>Farming agressif sur zombies normaux</li>
+                            <li>Éviter les consommables coûteux</li>
+                            <li>Toujours garder la lumière active</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h3><span class="emoji">🧟‍♀️</span>PHASE 3-4 : Milieu de Partie</h3>
+                    <div class="warning-box">
+                        <h4><span class="emoji">🚨</span>Exigences Critiques</h4>
+                        <ul>
+                            <li><strong>Résistance Virale : 50%+ OBLIGATOIRE</strong></li>
+                            <li>Cartes : 2-3 maximisées par rôle</li>
+                            <li>Générateurs : Niveau 8+</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <h3><span class="emoji">😈</span>PHASE 5+ & HOLY MOUNTAIN</h3>
+                    <div class="warning-box">
+                        <h4><span class="emoji">❗</span>Prérequis Non Négociables</h4>
+                        <ul>
+                            <li>✅ Résistance virale 80%+</li>
+                            <li>✅ Équipe finale optimisée</li>
+                            <li>✅ 3-4 cartes tactiques maximisées</li>
+                            <li>✅ Phare niveau maximum</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            teams: `
+                <h2>Formations Meta 4+1</h2>
+                
+                <div class="info-box">
+                    <h3><span class="emoji">🎴</span>Carte Hybrid Squad (4+1)</h3>
+                    <p>Cette carte RÉVOLUTIONNAIRE vous permet d'utiliser 1 héros de type différent tout en maintenant le <span class="highlight">bonus complet de 20%</span>.</p>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">🛡️</span>FORMATION #1 : TANK + ADAM</h3>
+                    <p class="highlight">★ MEILLEURE POUR BLOOD NIGHT ENDGAME ★</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">TANK</div>
+                            <div class="hero-name">Scarlett</div>
+                            <div class="hero-desc">Bouclier + Soins. CRITIQUE pour synergie Adam</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">OFF-TANK</div>
+                            <div class="hero-name">Murphy</div>
+                            <div class="hero-desc">Réduction dégâts physiques</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">BURST DPS</div>
+                            <div class="hero-name">Adam</div>
+                            <div class="hero-desc">Contre-dégâts + synergie Scarlett</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">SUPPORT</div>
+                            <div class="hero-name">Marshall</div>
+                            <div class="hero-desc">Buffs d'équipe</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">AoE DPS</div>
+                            <div class="hero-name">Kimberly</div>
+                            <div class="hero-desc">Dégâts de zone</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>Pourquoi Ça Marche</h4>
+                        <p>La synergie Scarlett + Adam est <span class="highlight">presque inarrêtable</span> avec un énorme boost contre Aircraft.</p>
+                    </div>
+                </div>
+
+                <div class="team-composition">
+                    <h3><span class="emoji">✈️</span>FORMATION #2 : AIRCRAFT + MURPHY</h3>
+                    <p>Haute Mobilité, Haute Survie</p>
+                    
+                    <div class="hero-grid">
+                        <div class="hero-card">
+                            <div class="hero-role">BURST</div>
+                            <div class="hero-name">DVA</div>
+                            <div class="hero-desc">Burst + Arme Exclusive</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">TANK</div>
+                            <div class="hero-name">Lucius</div>
+                            <div class="hero-desc">Tank Aircraft défensif</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">DPS</div>
+                            <div class="hero-name">Morrison</div>
+                            <div class="hero-desc">Débuff DEF</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">SNIPER</div>
+                            <div class="hero-name">Schuyler</div>
+                            <div class="hero-desc">Sniper arrière</div>
+                        </div>
+                        <div class="hero-card">
+                            <div class="hero-role">+1 TANK</div>
+                            <div class="hero-name">Murphy</div>
+                            <div class="hero-desc">Réduction dégâts. EW Lv10+ idéal</div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            tactics: `
+                <h2>Cartes Tactiques Saison 4</h2>
+
+                <div class="info-box">
+                    <h3>Types de Cartes</h3>
+                    <p><span class="card-type card-diamond">◆ DIAMOND (Universel)</span></p>
+                    <p><span class="card-type card-fist">👊 FIST (Battlestreak)</span></p>
+                    <p><span class="card-type card-boots">👟 BOOTS (Quickstride)</span></p>
+                    <p><span class="card-type card-shield">🛡️ SHIELD (Garrison)</span></p>
+                </div>
+
+                <h3>Cartes de Base (Permanentes)</h3>
+                
+                <div class="phase-card">
+                    <h4><span class="emoji">1️⃣</span>HYBRID SQUAD (4+1)</h4>
+                    <p><span class="highlight">GAME CHANGER ABSOLU</span></p>
+                    <ul>
+                        <li>✅ Permet formations mixtes</li>
+                        <li>✅ Maintient boost type 20% complet</li>
+                        <li>✅ Protection contre</li>
+                        <li>✅ ESSENTIEL pour Blood Night 5+</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">2️⃣</span>COUNTER REVERSAL</h4>
+                    <ul>
+                        <li>➕ Dégâts infligés augmentés</li>
+                        <li>➖ Dégâts reçus réduits</li>
+                        <li>📊 Base : 1.5%</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">3️⃣</span>MONSTER SLAYER</h4>
+                    <ul>
+                        <li>🦠 Réduit dégâts des monstres</li>
+                        <li>⚔️ Compétence tactique boss (1x/jour)</li>
+                        <li>🏆 OBLIGATOIRE pour Phase 5+</li>
+                    </ul>
+                </div>
+            `,
+            prep: `
+                <h2>Préparation Endgame</h2>
+
+                <div class="warning-box">
+                    <h4><span class="emoji">📅</span>Quand Commence Blood Night ?</h4>
+                    <p><strong>Blood Night commence le JOUR 2 de la SEMAINE 1</strong> de la Saison 4</p>
+                    <p><strong>Horaires :</strong> 3 sessions quotidiennes de 30 minutes</p>
+                    <ul>
+                        <li>🌙 <strong>02:30</strong> (heure serveur)</li>
+                        <li>🌅 <strong>10:30</strong> (heure serveur)</li>
+                        <li>🌆 <strong>18:30</strong> (heure serveur)</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4><span class="emoji">📅</span>JOUR 1 SAISON 4</h4>
+                    <p class="highlight">★ DERNIER JOUR AVANT BLOOD NIGHT ★</p>
+                    <ul>
+                        <li><strong>Phare :</strong> MINIMUM niveau 10</li>
+                        <li><strong>Générateurs :</strong> Au moins 4 actifs</li>
+                        <li><strong>Équipe finale :</strong> Décidée et testée</li>
+                        <li><strong>Alliance :</strong> Réunion finale 20h00</li>
+                    </ul>
+                    <div class="tip-box">
+                        <p><strong>Conseil :</strong> Première session à 02:30 Jour 2. Réglez 3 alarmes!</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>🗼 Phare</h4>
+                    <table class="stats-table">
+                        <tr><th>Niveau</th><th>Avantage</th><th>Priorité</th></tr>
+                        <tr><td>10</td><td>Résistance base</td><td>🔴 Critique</td></tr>
+                        <tr><td>15</td><td>+15% résistance</td><td>🟡 Élevée</td></tr>
+                        <tr><td>20</td><td>Élite unlock</td><td>🟢 Moyenne</td></tr>
+                    </table>
+                    <p><strong>Cible :</strong> Niveau 18-20 optimal</p>
+                </div>
+            `,
+            checklist: `
+                <h2>Liste de Contrôle</h2>
+
+                <div class="warning-box">
+                    <h4><span class="emoji">🎯</span>Référence Temporelle</h4>
+                    <p><strong>BLOOD NIGHT COMMENCE :</strong> Jour 2, Semaine 1 Saison 4</p>
+                    <p><strong>Première session :</strong> 02:30 (heure serveur)</p>
+                </div>
+
+                <div class="phase-card">
+                    <h3>📋 Pré-Saison 4 (1 Semaine Avant)</h3>
+                    <ul class="checklist">
+                        <li>Phare : planifier amélioration niveau 10+</li>
+                        <li>Ressources : 50k+ cuivre, 20k+ quartz minimum</li>
+                        <li>Discord alliance : canal dédié créé</li>
+                        <li>Étudier mécaniques Phare + Générateurs</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>⏰ Jour 1 Saison 4 (24h Avant)</h3>
+                    <p class="highlight">★ JOUR CRITIQUE ★</p>
+                    <ul class="checklist">
+                        <li><strong>MATIN (08:00-12:00) :</strong>
+                            <ul>
+                                <li>Phare activé niveau 10 minimum</li>
+                                <li>4 générateurs opérationnels</li>
+                                <li>Composition d'équipe décidée</li>
+                            </ul>
+                        </li>
+                        <li><strong>SOIR (20:00-22:00) :</strong>
+                            <ul>
+                                <li>Briefing final alliance</li>
+                                <li>Réviser stratégie Phase 1</li>
+                                <li>Définir 3 alarmes pour 02:00!</li>
+                            </ul>
+                        </li>
+                        <li><strong>NUIT (23:00) :</strong>
+                            <ul>
+                                <li>Dormir TÔT</li>
+                                <li>Alarmes : 02:00, 02:15, 02:25</li>
+                                <li>Téléphone chargé 100%</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>⚡ Jour 2 Semaine 1 - BLOOD NIGHT!</h3>
+                    
+                    <h4>🌙 SESSION 1 (02:30-03:00)</h4>
+                    <ul class="checklist">
+                        <li>Connexion 02:00 précises</li>
+                        <li>Vérifier Discord : équipe en ligne?</li>
+                        <li>Focus SEULEMENT zombie lvl 1-3</li>
+                        <li>NE PAS gaspiller consommables</li>
+                        <li>Surveiller couleur zombies (rouge = STOP)</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h3>❌ Erreurs Fatales</h3>
+                    <ol>
+                        <li><strong>Jour 1 :</strong> Ne pas activer Phare à temps</li>
+                        <li><strong>Semaine 1 :</strong> Gaspiller buffs sur zombies normaux</li>
+                        <li><strong>Semaine 2-3 :</strong> Aller Phase 3 sans 50% résist</li>
+                        <li><strong>Holy Mt. :</strong> Aller SOLO (suicide garanti!)</li>
+                    </ol>
+                </div>
+
+                <div class="info-box">
+                    <h3>🏆 Conditions de Victoire</h3>
+                    <ul>
+                        <li>✅ Survivre toutes les 8 semaines</li>
+                        <li>✅ Phare niveau 20+ atteint</li>
+                        <li>✅ Top 10 classement Holy Mountain</li>
+                        <li>✅ Récompenses légendaires obtenues</li>
+                        <li>✅ Alliance parfaitement coordonnée</li>
+                    </ul>
+                </div>
+            `
+        }
+    };
+
+    let currentLanguage = 'it';
+
+    function showTab(tabId) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(s => s.classList.remove('active'));
+        
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(tabId)?.classList.add('active');
+        event.target.closest('.tab-btn')?.classList.add('active');
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeLanguage(lang) {
+        currentLanguage = lang;
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        
+        renderContent();
+        
+        document.documentElement.lang = lang;
+    }
+
+    function renderContent() {
+        const container = document.getElementById('main-container');
+        const langContent = content[currentLanguage];
+        
+        let html = '<div class="nav-tabs">';
+        langContent.tabs.forEach(tab => {
+            html += `<button class="tab-btn ${tab.id === 'overview' ? 'active' : ''}" onclick="showTab('${tab.id}')">
+                <span class="emoji">${tab.icon}</span> ${tab.label}
+            </button>`;
+        });
+        html += '</div>';
+        
+        // Add all sections
+        html += `<div id="overview" class="content-section active">${langContent.overview}</div>`;
+        html += `<div id="phases" class="content-section">${langContent.phases}</div>`;
+        html += `<div id="teams" class="content-section">${langContent.teams}</div>`;
+        html += `<div id="tactics" class="content-section">${langContent.tactics}</div>`;
+        html += `<div id="prep" class="content-section">${langContent.prep}</div>`;
+        html += `<div id="checklist" class="content-section">${langContent.checklist}</div>`;
+        
+        container.innerHTML = html;
+    }
+
+    window.onload = function() {
+        renderContent();
+    };
+</script>
+```
+
+</body>
+</html>
